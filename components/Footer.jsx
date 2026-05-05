@@ -53,7 +53,7 @@ const Footer = () => {
               <a href="#" className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
                 <Instagram size={16} />
               </a>
-              <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer"
+              <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer"
                 className="w-9 h-9 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition-colors">
                 <FaWhatsapp size={16} />
               </a>
@@ -122,12 +122,12 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-primary flex-shrink-0" />
-                <a href="tel:+212600000000" className="hover:text-white transition-colors">+212 600 000 000</a>
+                <a href="tel:+212668835994" className="hover:text-white transition-colors">+212 6 68 83 59 94</a>
               </li>
               <li className="flex items-center gap-3">
                 <FaWhatsapp size={18} className="text-green-400 flex-shrink-0" />
-                <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer"
-                  className="hover:text-white transition-colors">+212 600 000 000</a>
+                <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer"
+                  className="hover:text-white transition-colors">+212 6 68 83 59 94</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-primary flex-shrink-0" />

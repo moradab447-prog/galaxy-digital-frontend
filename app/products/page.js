@@ -56,6 +56,11 @@ const ProductCard = ({ product }) => {
             -{discount}%
           </span>
         )}
+        {product.stock === 0 && (
+          <span className="absolute top-3 left-3 z-10 bg-gray-700 text-white text-[10px] font-bold px-2 py-1 rounded-lg">
+            Rupture de stock
+          </span>
+        )}
         <button
           type="button"
           onClick={(e) => { e.stopPropagation(); setLiked(!liked); toast(liked ? "Retiré des favoris" : "Ajouté aux favoris ❤️"); }}
@@ -86,22 +91,39 @@ const ProductCard = ({ product }) => {
           <span className="text-gray-400 text-[10px] ml-1">(4.8)</span>
         </div>
         <div className="mt-auto pt-2 border-t border-gray-50">
-          <div className="flex items-baseline gap-2 mb-3">
-            <span className="text-base font-bold text-[#8B0000]">
-              {product.price === 0 ? "Prix sur demande" : `${Number(product.price).toLocaleString()} MAD`}
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-baseline gap-2">
+              <span className="text-base font-bold text-[#8B0000]">
+                {product.price === 0 ? "Prix sur demande" : `${Number(product.price).toLocaleString()} MAD`}
+              </span>
+              {product.originalPrice > product.price && (
+                <span className="text-xs text-gray-400 line-through">{Number(product.originalPrice).toLocaleString()} MAD</span>
+              )}
+            </div>
+            <span className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${
+              product.stock > 5  ? 'bg-green-50 text-green-700' :
+              product.stock > 0  ? 'bg-amber-50 text-amber-600' :
+                                   'bg-red-50 text-red-500'
+            }`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${
+                product.stock > 5 ? 'bg-green-500' :
+                product.stock > 0 ? 'bg-amber-500' : 'bg-red-500'
+              }`} />
+              {product.stock > 5 ? 'En stock' : product.stock > 0 ? `${product.stock} restants` : 'Indisponible'}
             </span>
-            {product.originalPrice > product.price && (
-              <span className="text-xs text-gray-400 line-through">{Number(product.originalPrice).toLocaleString()} MAD</span>
-            )}
           </div>
           <motion.button
             whileTap={{ scale: 0.95 }}
-            disabled={isAdding}
+            disabled={isAdding || product.stock === 0}
             onClick={handleAddToCart}
-            className="w-full py-2 rounded-xl text-sm font-bold flex items-center justify-center gap-2 bg-[#8B0000] text-white hover:bg-[#6b0000] disabled:bg-gray-300 transition-colors"
+            className={`w-full py-2 rounded-xl text-sm font-bold flex items-center justify-center gap-2 transition-colors ${
+              product.stock === 0
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                : 'bg-[#8B0000] text-white hover:bg-[#6b0000]'
+            } disabled:opacity-70`}
           >
             {isAdding ? <Loader2 size={16} className="animate-spin" /> : <ShoppingCart size={16} />}
-            {isAdding ? "Ajout..." : "Ajouter au panier"}
+            {isAdding ? "Ajout..." : product.stock === 0 ? "Indisponible" : "Ajouter au panier"}
           </motion.button>
         </div>
       </div>

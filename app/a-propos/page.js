@@ -129,7 +129,7 @@ export default function AboutPage() {
           <Link href="/products" className="bg-white text-primary font-black px-8 py-3.5 rounded-full hover:bg-red-50 transition shadow-lg">
             Voir le catalogue
           </Link>
-          <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer"
+          <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer"
             className="bg-green-500 text-white font-bold px-8 py-3.5 rounded-full hover:bg-green-600 transition flex items-center gap-2">
             <FaWhatsapp size={18} /> WhatsApp
           </a>

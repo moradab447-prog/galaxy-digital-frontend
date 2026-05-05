@@ -113,7 +113,7 @@ export default function BlogPost() {
             <Link href="/products" className="bg-primary text-white font-black px-6 py-3 rounded-full hover:bg-primary-light transition shadow-md">
               Voir les produits
             </Link>
-            <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer"
+            <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer"
               className="bg-green-500 text-white font-bold px-6 py-3 rounded-full flex items-center gap-2 hover:bg-green-600 transition">
               <FaWhatsapp size={16} /> Demander conseil
             </a>

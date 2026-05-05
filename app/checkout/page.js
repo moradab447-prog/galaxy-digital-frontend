@@ -241,7 +241,7 @@ export default function Checkout() {
               <p className="font-black text-green-800 text-sm mb-1">Commander via WhatsApp</p>
               <p className="text-xs text-green-700 mb-3">Parlez à un conseiller et passez votre commande directement.</p>
               <a
-                href="https://wa.me/212600000000?text=Bonjour%20Galaxy%20Digital%2C%20je%20souhaite%20passer%20une%20commande."
+                href="https://wa.me/212668835994?text=Bonjour%20Galaxy%20Digital%2C%20je%20souhaite%20passer%20une%20commande."
                 target="_blank" rel="noreferrer"
                 className="flex items-center justify-center gap-2 bg-green-500 text-white text-sm font-black py-2.5 rounded-xl hover:bg-green-600 transition"
               >

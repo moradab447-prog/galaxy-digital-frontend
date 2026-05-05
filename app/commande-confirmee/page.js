@@ -85,7 +85,7 @@ function OrderConfirmationInner() {
 
         <div className="space-y-3">
           <a
-            href={`https://wa.me/212600000000?text=Bonjour%20Galaxy%20Digital%2C%20j'ai%20passé%20la%20commande%20%23${orderNum}%20et%20je%20souhaite%20suivre%20ma%20livraison.`}
+            href={`https://wa.me/212668835994?text=Bonjour%20Galaxy%20Digital%2C%20j'ai%20passé%20la%20commande%20%23${orderNum}%20et%20je%20souhaite%20suivre%20ma%20livraison.`}
             target="_blank" rel="noreferrer"
             className="flex items-center justify-center gap-2 w-full bg-green-500 text-white font-bold py-3.5 rounded-2xl hover:bg-green-600 transition"
           >
@@ -101,7 +101,7 @@ function OrderConfirmationInner() {
 
         <p className="text-xs text-gray-400 mt-6 leading-relaxed">
           Un email de confirmation vous sera envoyé si une adresse e-mail a été fournie.<br />
-          Pour toute question : <a href="tel:+212600000000" className="text-primary font-bold">+212 600 000 000</a>
+          Pour toute question : <a href="tel:+212668835994" className="text-primary font-bold">+212 6 68 83 59 94</a>
         </p>
       </motion.div>
     </div>

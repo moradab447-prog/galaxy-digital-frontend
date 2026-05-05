@@ -90,8 +90,8 @@ export default function DeliveryPayment() {
           <h2 className="text-xl font-black mb-2">Une question sur votre livraison ?</h2>
           <p className="text-red-200 text-sm mb-6">Contactez-nous par téléphone ou WhatsApp, nous répondons rapidement.</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href="tel:+212600000000" className="bg-white text-primary font-black px-6 py-3 rounded-full hover:bg-red-50 transition">📞 +212 600 000 000</a>
-            <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer" className="bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition flex items-center gap-2"><FaWhatsapp size={16} /> WhatsApp</a>
+            <a href="tel:+212668835994" className="bg-white text-primary font-black px-6 py-3 rounded-full hover:bg-red-50 transition">📞 +212 6 68 83 59 94</a>
+            <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer" className="bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition flex items-center gap-2"><FaWhatsapp size={16} /> WhatsApp</a>
           </div>
         </div>
       </div>

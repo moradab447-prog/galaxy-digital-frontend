@@ -188,7 +188,7 @@ export default function FAQ() {
               {/* Boutons */}
               <div className="bg-white p-5 space-y-3">
                 <a
-                  href="https://wa.me/212600000000"
+                  href="https://wa.me/212668835994"
                   target="_blank"
                   rel="noreferrer"
                   className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20b957] text-white py-3.5 px-4 rounded-xl font-bold text-sm transition-colors shadow-md shadow-green-200"
@@ -196,10 +196,10 @@ export default function FAQ() {
                   <FaWhatsapp size={18} /> Écrire sur WhatsApp
                 </a>
                 <a
-                  href="tel:+212600000000"
+                  href="tel:+212668835994"
                   className="w-full flex items-center justify-center gap-2 border-2 border-[#8B0000] text-[#8B0000] hover:bg-[#8B0000] hover:text-white py-3.5 px-4 rounded-xl font-bold text-sm transition-all"
                 >
-                  <Phone size={16} /> +212 600 000 000
+                  <Phone size={16} /> +212 6 68 83 59 94
                 </a>
               </div>
             </div>

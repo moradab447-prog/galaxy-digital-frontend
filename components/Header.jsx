@@ -86,7 +86,7 @@ const Header = () => {
       {/* Top bar */}
       <div className="bg-primary text-white text-xs py-1.5 text-center font-medium tracking-wide">
         🚚 Livraison partout au Maroc · Paiement à la livraison (COD) ·
-        <a href="tel:+212600000000" className="underline ml-1 hover:no-underline">+212 600 000 000</a>
+        <a href="tel:+212668835994" className="underline ml-1 hover:no-underline">+212 6 68 83 59 94</a>
       </div>
 
       {/* Main header */}
@@ -132,7 +132,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               {/* WhatsApp shortcut */}
               <a
-                href="https://wa.me/212600000000"
+                href="https://wa.me/212668835994"
                 target="_blank"
                 rel="noreferrer"
                 className="hidden lg:flex items-center gap-1.5 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full hover:bg-green-600 transition-colors"
@@ -269,7 +269,7 @@ const Header = () => {
             ))}
             <div className="ml-auto flex items-center gap-2 text-xs text-gray-500">
               <Phone size={13} className="text-primary" />
-              <span className="font-bold text-gray-700">+212 600 000 000</span>
+              <span className="font-bold text-gray-700">+212 6 68 83 59 94</span>
             </div>
           </nav>
         </div>
@@ -336,7 +336,7 @@ const Header = () => {
             </div>
 
             <a
-              href="https://wa.me/212600000000"
+              href="https://wa.me/212668835994"
               target="_blank"
               rel="noreferrer"
               className="mt-4 flex items-center justify-center gap-2 bg-green-500 text-white text-sm font-bold py-3 rounded-xl hover:bg-green-600 transition"

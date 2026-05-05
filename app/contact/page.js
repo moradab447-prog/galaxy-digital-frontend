@@ -42,8 +42,8 @@ export default function Contact() {
               <h2 className="text-xl font-black text-gray-900 mb-5">Informations de contact</h2>
               <div className="space-y-4">
                 {[
-                  { icon: <Phone size={20} className="text-primary" />, label: "Téléphone", value: "+212 600 000 000", href: "tel:+212600000000" },
-                  { icon: <FaWhatsapp size={20} className="text-green-500" />, label: "WhatsApp", value: "+212 600 000 000", href: "https://wa.me/212600000000" },
+                  { icon: <Phone size={20} className="text-primary" />, label: "Téléphone", value: "+212 6 68 83 59 94", href: "tel:+212668835994" },
+                  { icon: <FaWhatsapp size={20} className="text-green-500" />, label: "WhatsApp", value: "+212 6 68 83 59 94", href: "https://wa.me/212668835994" },
                   { icon: <Mail size={20} className="text-primary" />, label: "Email", value: "contact@galaxydigital.ma", href: "mailto:contact@galaxydigital.ma" },
                   { icon: <MapPin size={20} className="text-primary" />, label: "Adresse", value: "Secteur 7, Hay Mohammadi, Agadir 80000", href: null },
                 ].map((item) => (
@@ -74,10 +74,10 @@ export default function Contact() {
               <div className="flex gap-3">
                 <a href="#" className="w-11 h-11 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition"><FaFacebook size={18} /></a>
                 <a href="#" className="w-11 h-11 bg-gradient-to-tr from-pink-500 to-yellow-400 text-white rounded-full flex items-center justify-center hover:opacity-90 transition"><FaInstagram size={18} /></a>
-                <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer" className="w-11 h-11 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 transition"><FaWhatsapp size={18} /></a>
+                <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer" className="w-11 h-11 bg-green-500 text-white rounded-full flex items-center justify-center hover:bg-green-600 transition"><FaWhatsapp size={18} /></a>
               </div>
             </div>
-            <a href="https://wa.me/212600000000?text=Bonjour%20Galaxy%20Digital%2C%20je%20vous%20contacte%20depuis%20votre%20site%20web." target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-green-500 text-white font-black py-4 rounded-2xl hover:bg-green-600 transition shadow-lg">
+            <a href="https://wa.me/212668835994?text=Bonjour%20Galaxy%20Digital%2C%20je%20vous%20contacte%20depuis%20votre%20site%20web." target="_blank" rel="noreferrer" className="flex items-center justify-center gap-3 bg-green-500 text-white font-black py-4 rounded-2xl hover:bg-green-600 transition shadow-lg">
               <FaWhatsapp size={22} /> Écrire sur WhatsApp
             </a>
           </motion.div>

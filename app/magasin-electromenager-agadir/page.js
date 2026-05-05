@@ -14,7 +14,7 @@ export default function MagasinAgadir() {
         "name": "Galaxy Digital — Magasin Électroménager Agadir",
         "description": "Magasin électroménager à Agadir. Livraison 24h, paiement à la livraison, garantie officielle.",
         "url": "https://galaxydigital.ma/magasin-electromenager-agadir",
-        "telephone": "+212600000000",
+        "telephone": "+212668835994",
         "address": { "@type": "PostalAddress", "streetAddress": "Secteur 7, Hay Mohammadi", "addressLocality": "Agadir", "postalCode": "80000", "addressCountry": "MA" }
       })}} />
 
@@ -27,7 +27,7 @@ export default function MagasinAgadir() {
             <p className="text-gray-200 text-lg max-w-2xl mx-auto mb-8">Votre magasin d'électroménager de confiance à Agadir. Commandez en ligne — livraison gratuite à domicile, paiement à la réception.</p>
             <div className="flex gap-4 justify-center flex-wrap">
               <Link href="/products" className="bg-primary text-white font-black px-8 py-4 rounded-full hover:bg-primary-light transition shadow-xl">Boutique en ligne</Link>
-              <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer" className="bg-green-500 text-white font-bold px-8 py-4 rounded-full flex items-center gap-2"><FaWhatsapp size={20} /> WhatsApp</a>
+              <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer" className="bg-green-500 text-white font-bold px-8 py-4 rounded-full flex items-center gap-2"><FaWhatsapp size={20} /> WhatsApp</a>
             </div>
           </motion.div>
         </div>

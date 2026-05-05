@@ -307,7 +307,7 @@ export default function GalaxyHome() {
                         className="bg-[#8B0000] hover:bg-[#a50000] text-white px-7 py-3 rounded-full font-black text-sm transition-all shadow-lg shadow-red-900/40">
                         {s.cta}
                       </button>
-                      <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer"
+                      <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer"
                         className="bg-[#25D366] text-white px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 hover:bg-[#20b957] transition-all">
                         <FaWhatsapp size={16} /> WhatsApp
                       </a>
@@ -365,7 +365,7 @@ export default function GalaxyHome() {
               </div>
               <span className="text-[#8B0000] text-xs flex items-center gap-1 font-bold group-hover:gap-2 transition-all">En savoir plus <ChevronRight size={12} /></span>
             </div>
-            <div className="bg-[#25D366] rounded-2xl p-5 flex-1 flex flex-col justify-between hover:shadow-xl transition-all cursor-pointer group" onClick={() => window.open("https://wa.me/212600000000", "_blank")}>
+            <div className="bg-[#25D366] rounded-2xl p-5 flex-1 flex flex-col justify-between hover:shadow-xl transition-all cursor-pointer group" onClick={() => window.open("https://wa.me/212668835994", "_blank")}>
               <div>
                 <FaWhatsapp size={28} className="text-white mb-2" />
                 <h3 className="text-white font-black text-sm leading-tight">Commandez<br/>sur WhatsApp</h3>
@@ -561,14 +561,14 @@ export default function GalaxyHome() {
           <h2 className="text-2xl font-black text-white mb-2">Besoin d&apos;un conseil ?</h2>
           <p className="text-gray-400 text-sm mb-7">Nos conseillers répondent en quelques minutes sur WhatsApp.</p>
           <div className="flex gap-3 justify-center flex-wrap">
-            <a href="https://wa.me/212600000000?text=Bonjour%20Galaxy%20Digital"
+            <a href="https://wa.me/212668835994?text=Bonjour%20Galaxy%20Digital"
               target="_blank" rel="noreferrer"
               className="inline-flex items-center gap-2 bg-[#25D366] text-white font-black px-8 py-3.5 rounded-full hover:bg-[#20b957] transition-all shadow-xl">
               <FaWhatsapp size={20} /> Commander via WhatsApp
             </a>
-            <a href="tel:+212600000000"
+            <a href="tel:+212668835994"
               className="inline-flex items-center gap-2 bg-white/10 text-white font-bold px-6 py-3.5 rounded-full hover:bg-white/20 transition-all border border-white/20">
-              <Phone size={18} /> +212 600 000 000
+              <Phone size={18} /> +212 6 68 83 59 94
             </a>
           </div>
         </div>

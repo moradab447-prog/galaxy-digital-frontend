@@ -104,8 +104,8 @@ export default function Warranty() {
           <h2 className="text-xl font-black mb-3">Besoin d'un SAV ?</h2>
           <p className="text-red-200 text-sm mb-6">Notre équipe technique vous guide et planifie une intervention agréée.</p>
           <div className="flex gap-4 justify-center flex-wrap">
-            <a href="tel:+212600000000" className="bg-white text-primary font-black px-6 py-3 rounded-full hover:bg-red-50 transition">📞 Appeler le SAV</a>
-            <a href="https://wa.me/212600000000" target="_blank" rel="noreferrer" className="bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition flex items-center gap-2"><FaWhatsapp size={16} /> WhatsApp SAV</a>
+            <a href="tel:+212668835994" className="bg-white text-primary font-black px-6 py-3 rounded-full hover:bg-red-50 transition">📞 Appeler le SAV</a>
+            <a href="https://wa.me/212668835994" target="_blank" rel="noreferrer" className="bg-green-500 text-white font-bold px-6 py-3 rounded-full hover:bg-green-600 transition flex items-center gap-2"><FaWhatsapp size={16} /> WhatsApp SAV</a>
           </div>
         </div>
       </div>
