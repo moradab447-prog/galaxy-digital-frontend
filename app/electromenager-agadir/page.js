@@ -16,7 +16,7 @@ export default function ElectromenagerAgadir() {
         "description": "Spécialiste électroménager à Agadir — livraison rapide, paiement à la livraison, garantie officielle.",
         "url": "https://galaxydigital.ma",
         "telephone": "+212668835994",
-        "address": { "@type": "PostalAddress", "streetAddress": "Secteur 7, Hay Mohammadi", "addressLocality": "Agadir", "postalCode": "80000", "addressCountry": "MA" },
+        "address": { "@type": "PostalAddress", "streetAddress": "Mag Nº 16 ET 17 IMM Oum Waraka Al Houda Agadir RDC", "addressLocality": "Agadir", "postalCode": "80000", "addressCountry": "MA" },
         "geo": { "@type": "GeoCoordinates", "latitude": 30.4278, "longitude": -9.5981 },
         "openingHours": ["Mo-Sa 09:00-20:00", "Su 10:00-17:00"],
         "priceRange": "$$"

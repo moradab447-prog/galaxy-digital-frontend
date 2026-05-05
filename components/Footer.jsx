@@ -118,7 +118,7 @@ const Footer = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-primary flex-shrink-0 mt-0.5" />
-                <span>Secteur 7, Hay Mohammadi<br />Agadir 80000, Maroc</span>
+                <span>Mag Nº 16 ET 17 IMM Oum Waraka Al Houda<br />Agadir RDC, Agadir 80000</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={18} className="text-primary flex-shrink-0" />

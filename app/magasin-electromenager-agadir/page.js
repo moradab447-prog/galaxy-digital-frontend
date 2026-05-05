@@ -15,7 +15,7 @@ export default function MagasinAgadir() {
         "description": "Magasin électroménager à Agadir. Livraison 24h, paiement à la livraison, garantie officielle.",
         "url": "https://galaxydigital.ma/magasin-electromenager-agadir",
         "telephone": "+212668835994",
-        "address": { "@type": "PostalAddress", "streetAddress": "Secteur 7, Hay Mohammadi", "addressLocality": "Agadir", "postalCode": "80000", "addressCountry": "MA" }
+        "address": { "@type": "PostalAddress", "streetAddress": "Mag Nº 16 ET 17 IMM Oum Waraka Al Houda Agadir RDC", "addressLocality": "Agadir", "postalCode": "80000", "addressCountry": "MA" }
       })}} />
 
       <section className="bg-gradient-to-br from-gray-900 via-primary/80 to-gray-900 py-24 px-4 text-white">
@@ -75,7 +75,7 @@ export default function MagasinAgadir() {
 
         <div className="bg-primary rounded-3xl p-8 text-center text-white">
           <h2 className="text-xl font-black mb-3">Visitez notre magasin ou commandez en ligne</h2>
-          <p className="text-red-200 text-sm mb-6">Secteur 7, Hay Mohammadi, Agadir · Ouvert 6j/7</p>
+          <p className="text-red-200 text-sm mb-6">Mag Nº 16 ET 17 IMM Oum Waraka Al Houda Agadir RDC, Agadir 80000 · Ouvert 6j/7</p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/contact" className="bg-white text-primary font-black px-8 py-3.5 rounded-full hover:bg-red-50 transition">Nous trouver</Link>
             <Link href="/products" className="bg-primary-light text-white font-black px-8 py-3.5 rounded-full hover:bg-primary transition border border-white/20">Boutique en ligne</Link>

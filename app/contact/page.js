@@ -45,7 +45,7 @@ export default function Contact() {
                   { icon: <Phone size={20} className="text-primary" />, label: "Téléphone", value: "+212 6 68 83 59 94", href: "tel:+212668835994" },
                   { icon: <FaWhatsapp size={20} className="text-green-500" />, label: "WhatsApp", value: "+212 6 68 83 59 94", href: "https://wa.me/212668835994" },
                   { icon: <Mail size={20} className="text-primary" />, label: "Email", value: "contact@galaxydigital.ma", href: "mailto:contact@galaxydigital.ma" },
-                  { icon: <MapPin size={20} className="text-primary" />, label: "Adresse", value: "Secteur 7, Hay Mohammadi, Agadir 80000", href: null },
+                  { icon: <MapPin size={20} className="text-primary" />, label: "Adresse", value: "Mag Nº 16 ET 17 IMM Oum Waraka Al Houda Agadir RDC, Agadir 80000", href: null },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start gap-4 p-4 bg-gray-50 rounded-2xl">
                     <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">{item.icon}</div>
