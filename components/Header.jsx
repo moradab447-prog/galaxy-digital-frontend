@@ -95,18 +95,12 @@ const Header = () => {
           <div className="flex items-center justify-between gap-4 py-3">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-              <div className="bg-primary p-1.5 rounded-lg text-white">
-                <ShoppingCart size={18} />
-              </div>
-              <div className="leading-tight">
-                <span className="text-lg sm:text-xl font-black text-primary tracking-tight block">
-                  GALAXY DIGITAL
-                </span>
-                <span className="text-[9px] text-gray-400 font-semibold tracking-widest uppercase -mt-1 block">
-                  Électroménager · Agadir
-                </span>
-              </div>
+            <Link href="/" className="flex items-center flex-shrink-0">
+              <img
+                src="/logo.svg"
+                alt="Galaxy Digital"
+                className="h-10 sm:h-12 w-auto"
+              />
             </Link>
 
             {/* Desktop search */}
