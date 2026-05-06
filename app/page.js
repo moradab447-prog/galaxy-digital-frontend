@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import {
   ShoppingCart, ChevronRight, ChevronLeft, Loader2, Star, Shield,
   Truck, Headphones, RotateCcw, Heart, BadgeCheck, Clock, Zap,
-  Package, ArrowRight, Check, Phone
+  Package, ArrowRight, Check, Phone, MapPin
 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { useCart } from "@/context/CartContext";
@@ -570,6 +570,70 @@ export default function GalaxyHome() {
               className="inline-flex items-center gap-2 bg-white/10 text-white font-bold px-6 py-3.5 rounded-full hover:bg-white/20 transition-all border border-white/20">
               <Phone size={18} /> +212 6 68 83 59 94
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LOCALISATION ──────────────────────────────────────────────────── */}
+      <section className="bg-white py-16 border-t border-gray-100">
+        <div className="max-w-[1400px] mx-auto px-4 lg:px-6">
+          <div className="section-title mb-10">
+            <span className="text-primary text-xs font-black uppercase tracking-widest">Où nous trouver</span>
+            <h2 className="text-2xl md:text-3xl font-black text-gray-900 mt-1">Notre Magasin à Agadir</h2>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
+            {/* Map */}
+            <div className="rounded-3xl overflow-hidden shadow-lg h-80 lg:h-96 bg-gray-100">
+              <iframe
+                title="Galaxy Digital Agadir"
+                src="https://maps.google.com/maps?q=Immeuble+Oum+Waraka+Al+Houda+Agadir&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                className="w-full h-full border-0"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+            {/* Info */}
+            <div className="space-y-5">
+              <div className="flex items-start gap-4 p-5 bg-gray-50 rounded-2xl">
+                <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                  <MapPin size={20} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Adresse</p>
+                  <p className="font-bold text-gray-800 text-sm">Mag Nº 16 ET 17 IMM Oum Waraka Al Houda Agadir RDC</p>
+                  <p className="text-gray-500 text-sm">Agadir 80000, Maroc</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-5 bg-gray-50 rounded-2xl">
+                <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                  <Clock size={20} className="text-primary" />
+                </div>
+                <div className="w-full">
+                  <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-2">Horaires d'ouverture</p>
+                  <div className="space-y-1 text-sm">
+                    <div className="flex justify-between"><span className="text-gray-600">Lundi – Samedi</span><span className="font-black text-gray-800">9h00 – 20h00</span></div>
+                    <div className="flex justify-between"><span className="text-gray-600">Dimanche</span><span className="font-black text-gray-800">10h00 – 17h00</span></div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 p-5 bg-gray-50 rounded-2xl">
+                <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center shrink-0">
+                  <Phone size={20} className="text-primary" />
+                </div>
+                <div>
+                  <p className="text-xs font-black text-gray-400 uppercase tracking-widest mb-1">Téléphone</p>
+                  <a href="tel:+212668835994" className="font-black text-gray-800 hover:text-primary transition-colors text-sm">+212 6 68 83 59 94</a>
+                </div>
+              </div>
+              <a
+                href="https://maps.google.com/?q=Immeuble+Oum+Waraka+Al+Houda+Agadir"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 w-full bg-primary text-white font-black py-4 rounded-2xl hover:bg-[#6b0000] transition-colors shadow-lg shadow-red-100"
+              >
+                <MapPin size={18} /> Ouvrir dans Google Maps
+              </a>
+            </div>
           </div>
         </div>
       </section>
