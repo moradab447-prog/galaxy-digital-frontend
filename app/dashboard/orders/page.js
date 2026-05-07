@@ -76,7 +76,7 @@ export default function AdminOrdersPage() {
     try {
       setLoading(true);
       const res = await API.get('/orders/all');
-      setOrders(res.data || []);
+      setOrders(res.data?.orders || res.data || []);
     } catch {
       toast.error("Erreur de chargement des commandes");
     } finally {
