@@ -112,15 +112,23 @@ export default function AdminProductsPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.imageUrl) { toast.error("L'URL de l'image est requise"); return; }
     setSubmitting(true);
     try {
-      const data = new FormData();
-      Object.entries(formData).forEach(([k, v]) => { if (v !== null && v !== '') data.append(k, v); });
+      const payload = {
+        name: formData.name,
+        description: formData.description,
+        price: Number(formData.price),
+        originalPrice: formData.originalPrice ? Number(formData.originalPrice) : undefined,
+        stock: Number(formData.stock),
+        categoryId: Number(formData.categoryId),
+        imageUrl: formData.imageUrl,
+      };
       if (currentProduct) {
-        await API.put(`/products/${currentProduct.id}`, data);
+        await API.put(`/products/${currentProduct.id}`, payload);
         toast.success("Produit mis à jour ✓");
       } else {
-        await API.post('/products', data);
+        await API.post('/products', payload);
         toast.success("Produit ajouté ✓");
       }
       setIsModalOpen(false);
@@ -357,38 +365,15 @@ export default function AdminProductsPage() {
                       <p className="text-xs">Aucune image</p>
                     </div>}
               </div>
-              {/* Mode switch */}
-              <div className="flex rounded-xl overflow-hidden border border-gray-200 text-xs font-bold">
-                <button
-                  type="button"
-                  onClick={() => setImageMode('url')}
-                  className={`flex-1 py-2 flex items-center justify-center gap-1 transition-colors ${imageMode === 'url' ? 'bg-[#8B0000] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
-                >
-                  <Link2 size={11} /> URL
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setImageMode('file')}
-                  className={`flex-1 py-2 flex items-center justify-center gap-1 transition-colors ${imageMode === 'file' ? 'bg-[#8B0000] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
-                >
-                  <UploadCloud size={11} /> Fichier
-                </button>
-              </div>
-              {imageMode === 'url'
-                ? <input
-                    type="url"
-                    name="imageUrl"
-                    value={formData.imageUrl}
-                    onChange={handleInputChange}
-                    placeholder="https://..."
-                    className="border border-gray-200 rounded-xl px-3 py-2.5 text-gray-700 text-xs placeholder-gray-400 outline-none focus:border-[#8B0000] w-full transition-colors"
-                  />
-                : <label className="relative border-2 border-dashed border-gray-200 rounded-xl px-3 py-4 text-gray-400 text-xs text-center cursor-pointer hover:border-[#8B0000]/40 transition-colors">
-                    <UploadCloud size={20} className="mx-auto mb-1 text-gray-300" />
-                    Cliquer pour choisir
-                    <input type="file" name="image" onChange={handleInputChange} className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" />
-                  </label>
-              }
+              <input
+                type="url"
+                name="imageUrl"
+                value={formData.imageUrl}
+                onChange={handleInputChange}
+                placeholder="https://... (coller URL image)"
+                className="border border-gray-200 rounded-xl px-3 py-2.5 text-gray-700 text-xs placeholder-gray-400 outline-none focus:border-[#8B0000] w-full transition-colors"
+              />
+              <p className="text-[10px] text-gray-400 text-center">Copier l'URL d'une image depuis Google Images ou WhatsApp</p>
             </div>
 
             {/* Droite — Formulaire */}
