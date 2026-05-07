@@ -1,82 +1,81 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect } from "react";
-import API from "@/api/api";
-import { useAuth } from "./AuthContext";
 
 const CartContext = createContext(null);
 
+const STORAGE_KEY = "galaxy_cart";
+
+const loadCart = () => {
+  if (typeof window === "undefined") return [];
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  } catch {
+    return [];
+  }
+};
+
+const saveCart = (items) => {
+  if (typeof window === "undefined") return;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+};
+
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-  const { isAuthenticated } = useAuth();
-
-  const fetchCart = async () => {
-    if (!isAuthenticated) {
-      setCart([]);
-      return;
-    }
-    try {
-      const res = await API.get("/api/cart");
-      setCart(res.data.items || []);
-    } catch (err) {
-      console.error("Erreur de chargement du panier:", err);
-      setCart([]);
-    }
-  };
 
   useEffect(() => {
-    fetchCart();
-  }, [isAuthenticated]);
+    setCart(loadCart());
+  }, []);
 
-  const addToCart = async (product, quantity = 1) => {
-    try {
-      await API.post("/api/cart", {
-        productId: product.id,
-        quantity,
-      });
-      fetchCart();
-    } catch (err) {
-      console.error("Add to cart error:", err);
-    }
-  };
-
-  const updateQuantity = async (cartItemId, newQuantity) => {
-    if (newQuantity < 1) return;
-    try {
-      await API.put(`/api/cart/${cartItemId}`, {
-        quantity: newQuantity,
-      });
-      setCart((prev) =>
-        prev.map((item) =>
-          item.id === cartItemId
-            ? { ...item, quantity: newQuantity }
+  const addToCart = (product, quantity = 1) => {
+    setCart((prev) => {
+      const existing = prev.find((item) => item.product.id === product.id);
+      let updated;
+      if (existing) {
+        updated = prev.map((item) =>
+          item.product.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
             : item
-        )
-      );
-    } catch (err) {
-      console.error("Update quantity error:", err);
-    }
+        );
+      } else {
+        updated = [
+          ...prev,
+          { id: `${product.id}-${Date.now()}`, product, quantity },
+        ];
+      }
+      saveCart(updated);
+      return updated;
+    });
   };
 
-  const removeFromCart = async (cartItemId) => {
-    try {
-      await API.delete(`/api/cart/${cartItemId}`);
-      setCart((prev) =>
-        prev.filter((item) => item.id !== cartItemId)
+  const updateQuantity = (cartItemId, newQuantity) => {
+    if (newQuantity < 1) return;
+    setCart((prev) => {
+      const updated = prev.map((item) =>
+        item.id === cartItemId ? { ...item, quantity: newQuantity } : item
       );
-    } catch (err) {
-      console.error("Remove item error:", err);
-    }
+      saveCart(updated);
+      return updated;
+    });
+  };
+
+  const removeFromCart = (cartItemId) => {
+    setCart((prev) => {
+      const updated = prev.filter((item) => item.id !== cartItemId);
+      saveCart(updated);
+      return updated;
+    });
   };
 
   const clearCart = () => {
     setCart([]);
+    saveCart([]);
   };
 
   const totalPrice = cart.reduce((acc, item) => {
     const price = Number(item?.product?.price) || 0;
-    const quantity = Number(item?.quantity) || 0;
-    return acc + price * quantity;
+    const qty = Number(item?.quantity) || 0;
+    return acc + price * qty;
   }, 0);
 
   return (
@@ -87,7 +86,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         updateQuantity,
         totalPrice,
-        fetchCart,
+        fetchCart: () => {},
         clearCart,
       }}
     >
@@ -98,8 +97,6 @@ export const CartProvider = ({ children }) => {
 
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCart must be used inside CartProvider");
-  }
+  if (!context) throw new Error("useCart must be used inside CartProvider");
   return context;
 };

@@ -48,21 +48,11 @@ export default function ProductDetails() {
     fetchData();
   }, [id]);
 
-  const handleAddToCart = async () => {
-    if (!isAuthenticated) {
-      toast.error("Veuillez vous connecter");
-      openLogin();
-      return;
-    }
-    try {
-      setIsAdding(true);
-      await addToCart(product, quantity);
-      toast.success("Ajouté au panier !");
-    } catch (error) {
-      toast.error("Erreur lors de l'ajout");
-    } finally {
-      setIsAdding(false);
-    }
+  const handleAddToCart = () => {
+    setIsAdding(true);
+    addToCart(product, quantity);
+    toast.success("Ajouté au panier !");
+    setTimeout(() => setIsAdding(false), 600);
   };
 
   const handleReviewSubmit = async (e) => {
@@ -99,7 +89,7 @@ export default function ProductDetails() {
   if (loading) {
     return (
       <div className="h-screen flex items-center justify-center">
-        <Loader2 className="animate-spin text-blue-600" size={40} />
+        <Loader2 className="animate-spin text-primary" size={40} />
       </div>
     );
   }
@@ -113,7 +103,7 @@ export default function ProductDetails() {
       <div className="max-w-7xl mx-auto px-4 py-6">
         <button
           onClick={() => router.back()}
-          className="flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors font-bold text-sm"
+          className="flex items-center gap-2 text-gray-500 hover:text-primary transition-colors font-bold text-sm"
         >
           <ArrowLeft size={18} /> RETOUR
         </button>
@@ -129,7 +119,7 @@ export default function ProductDetails() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex flex-col">
-          <span className="text-blue-600 font-black tracking-widest text-xs uppercase mb-4">GALAXY DIGITAL EXCLUSIF</span>
+          <span className="text-primary font-black tracking-widest text-xs uppercase mb-4">GALAXY DIGITAL EXCLUSIF</span>
           <h1 className="text-4xl font-black text-gray-900 leading-tight mb-4 uppercase">{product.name}</h1>
           <div className="flex items-center gap-4 mb-8">
             <div className="flex items-center gap-1 text-yellow-400">
@@ -141,7 +131,7 @@ export default function ProductDetails() {
           </div>
           <div className="mb-10">
             <div className="flex items-baseline gap-4">
-              <span className="text-4xl font-black text-blue-600">{product.price.toLocaleString()} MAD</span>
+              <span className="text-4xl font-black text-primary">{product.price.toLocaleString()} MAD</span>
               {product.originalPrice > product.price && (
                 <span className="text-xl text-gray-300 line-through font-bold">{product.originalPrice.toLocaleString()} MAD</span>
               )}
@@ -166,7 +156,7 @@ export default function ProductDetails() {
             <button
               disabled={isAdding}
               onClick={handleAddToCart}
-              className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-5 rounded-[2rem] font-black flex items-center justify-center gap-3 shadow-xl shadow-blue-100 transition-all active:scale-95"
+              className="flex-1 bg-primary hover:bg-primary-light text-white py-5 rounded-[2rem] font-black flex items-center justify-center gap-3 shadow-xl shadow-red-100 transition-all active:scale-95"
             >
               {isAdding ? <Loader2 className="animate-spin" /> : <ShoppingCart size={22} />}
               AJOUTER AU PANIER
@@ -174,7 +164,7 @@ export default function ProductDetails() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-10 border-t border-gray-100">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-50 rounded-lg text-blue-600"><ShieldCheck size={20} /></div>
+              <div className="p-2 bg-red-50 rounded-lg text-primary"><ShieldCheck size={20} /></div>
               <span className="text-[10px] font-black text-gray-400 uppercase">Garantie 2 ans</span>
             </div>
             <div className="flex items-center gap-3">
@@ -207,7 +197,7 @@ export default function ProductDetails() {
             <textarea
               rows="3"
               placeholder={isAuthenticated ? "Partagez votre expérience avec ce produit..." : "Veuillez vous connecter pour écrire un avis..."}
-              className="w-full bg-white border-none p-4 rounded-2xl focus:ring-2 focus:ring-blue-500 transition-all outline-none resize-none"
+              className="w-full bg-white border-none p-4 rounded-2xl focus:ring-2 focus:ring-primary/30 transition-all outline-none resize-none"
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
               disabled={!isAuthenticated || isSubmittingReview}
@@ -216,7 +206,7 @@ export default function ProductDetails() {
             <button
               type="submit"
               disabled={!isAuthenticated || isSubmittingReview || !newComment.trim()}
-              className="absolute bottom-4 right-4 bg-blue-600 text-white p-2 rounded-xl hover:bg-blue-700 disabled:bg-gray-300 transition-colors"
+              className="absolute bottom-4 right-4 bg-primary text-white p-2 rounded-xl hover:bg-primary-light disabled:bg-gray-300 transition-colors"
             >
               {isSubmittingReview ? <Loader2 size={20} className="animate-spin" /> : <Send size={20} />}
             </button>
@@ -228,7 +218,7 @@ export default function ProductDetails() {
           ) : (
             reviews.map((review) => (
               <div key={review.id} className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm flex gap-4">
-                <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 flex-shrink-0">
+                <div className="w-12 h-12 bg-red-50 rounded-full flex items-center justify-center text-primary flex-shrink-0">
                   <User size={24} />
                 </div>
                 <div className="flex-1">
