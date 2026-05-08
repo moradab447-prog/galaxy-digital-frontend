@@ -125,7 +125,7 @@ function AuthModal() {
 
           {/* Bottom strip */}
           <div className="relative z-10 mt-8 pt-6 border-t border-white/15">
-            <p className="text-red-300 text-[11px]">© 2025 Galaxy Digital — Agadir, Maroc</p>
+            <p className="text-red-300 text-[11px]">© 2026 Galaxy Digital — Agadir, Maroc</p>
           </div>
         </div>
 
