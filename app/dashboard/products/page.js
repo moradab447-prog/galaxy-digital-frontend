@@ -50,7 +50,7 @@ export default function AdminProductsPage() {
   const [currentProduct, setCurrentProduct] = useState(null);
   const [imagePreview,   setImagePreview]   = useState(null);
   const [submitting,     setSubmitting]     = useState(false);
-  const [imageMode,      setImageMode]      = useState('url');
+  const [imageMode,      setImageMode]      = useState('file');
   const [filterCat,      setFilterCat]      = useState('');
 
   const [formData, setFormData] = useState({
@@ -105,7 +105,7 @@ export default function AdminProductsPage() {
       setCurrentProduct(null);
       setFormData({ name: '', description: '', price: '', originalPrice: '', stock: '0', categoryId: '', imageUrl: '', image: null });
       setImagePreview(null);
-      setImageMode('url');
+      setImageMode('file');
     }
     setIsModalOpen(true);
   };
@@ -383,17 +383,17 @@ export default function AdminProductsPage() {
               <div className="flex rounded-xl overflow-hidden border border-gray-200 text-xs font-bold">
                 <button
                   type="button"
-                  onClick={() => setImageMode('url')}
-                  className={`flex-1 py-2 flex items-center justify-center gap-1 transition-colors ${imageMode === 'url' ? 'bg-[#8B0000] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
-                >
-                  <Link2 size={11} /> URL
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setImageMode('file')}
+                  onClick={() => { setImageMode('file'); setFormData(f => ({ ...f, imageUrl: '' })); }}
                   className={`flex-1 py-2 flex items-center justify-center gap-1 transition-colors ${imageMode === 'file' ? 'bg-[#8B0000] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
                 >
                   <UploadCloud size={11} /> Fichier
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setImageMode('url'); setFormData(f => ({ ...f, image: null })); setImagePreview(null); }}
+                  className={`flex-1 py-2 flex items-center justify-center gap-1 transition-colors ${imageMode === 'url' ? 'bg-[#8B0000] text-white' : 'text-gray-500 hover:bg-gray-100'}`}
+                >
+                  <Link2 size={11} /> URL
                 </button>
               </div>
               {imageMode === 'url'
