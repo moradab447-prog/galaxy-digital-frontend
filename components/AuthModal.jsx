@@ -72,7 +72,7 @@ function AuthModal() {
         {/* Close Button */}
         <button
           onClick={closeLogin}
-          className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/40 text-white transition-all z-20 md:text-white text-gray-500 md:bg-white/20 bg-gray-100"
+          className="absolute top-4 right-4 w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 hover:text-gray-900 transition-all z-20"
         >
           <X size={18} />
         </button>
