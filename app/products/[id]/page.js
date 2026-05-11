@@ -23,6 +23,7 @@ export default function ProductDetails() {
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
   const [zoomPos, setZoomPos] = useState({ active: false, x: 50, y: 50 });
+  const [activeTab, setActiveTab] = useState("description");
 
   const [reviews, setReviews] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -211,6 +212,50 @@ export default function ProductDetails() {
             </div>
           </div>
         </motion.div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 border-t border-gray-100 pt-12 mb-16">
+        <div className="flex gap-0 border-b border-gray-200 mb-8">
+          {[
+            { key: "description", label: "Description" },
+            { key: "details", label: "Détails Du Produit" },
+            { key: "expedition", label: "Expédition" },
+          ].map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-6 py-3 font-bold text-sm transition-all border-b-2 -mb-[2px] ${
+                activeTab === tab.key
+                  ? "border-primary text-gray-900"
+                  : "border-transparent text-gray-400 hover:text-gray-600"
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="text-gray-600 leading-relaxed text-sm max-w-4xl">
+          {activeTab === "description" && (
+            <p className="whitespace-pre-line">
+              {product.description || "Découvrez la performance et l'élégance avec ce produit sélectionné par Galaxy Digital."}
+            </p>
+          )}
+          {activeTab === "details" && (
+            <p className="whitespace-pre-line">
+              {product.description || "Aucun détail technique disponible pour ce produit."}
+            </p>
+          )}
+          {activeTab === "expedition" && (
+            <div className="space-y-3">
+              <p>🚚 <strong>Livraison 24–72h</strong> partout au Maroc</p>
+              <p>💳 <strong>Paiement à la livraison (COD)</strong> — vous payez en espèces à la réception</p>
+              <p>🛡️ <strong>Garantie officielle</strong> 1 à 3 ans selon le produit</p>
+              <p>✅ <strong>Produits 100% originaux</strong> — Galaxy Digital, Agadir</p>
+              <p>📞 Commande par WhatsApp : <strong>+212 668 835 994</strong></p>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="max-w-4xl mx-auto px-4 border-t border-gray-100 pt-16">
