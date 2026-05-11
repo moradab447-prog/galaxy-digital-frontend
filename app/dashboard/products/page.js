@@ -48,14 +48,14 @@ export default function AdminProductsPage() {
   const [searchTerm,     setSearchTerm]     = useState('');
   const [isModalOpen,    setIsModalOpen]    = useState(false);
   const [currentProduct, setCurrentProduct] = useState(null);
-  const [imagePreview,   setImagePreview]   = useState(null);
+  const [imagePreviews,  setImagePreviews]  = useState([]);
   const [submitting,     setSubmitting]     = useState(false);
   const [imageMode,      setImageMode]      = useState('file');
   const [filterCat,      setFilterCat]      = useState('');
 
   const [formData, setFormData] = useState({
     name: '', description: '', price: '', originalPrice: '',
-    stock: '0', categoryId: '', imageUrl: '', image: null
+    stock: '0', categoryId: '', imageUrl: '', images: []
   });
 
   const fetchData = async () => {
@@ -78,13 +78,13 @@ export default function AdminProductsPage() {
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === 'image') {
-      const file = files[0];
-      setFormData(f => ({ ...f, image: file }));
-      setImagePreview(URL.createObjectURL(file));
+    if (name === 'images') {
+      const fileArr = Array.from(files);
+      setFormData(f => ({ ...f, images: fileArr }));
+      setImagePreviews(fileArr.map(f => URL.createObjectURL(f)));
     } else if (name === 'imageUrl') {
       setFormData(f => ({ ...f, imageUrl: value }));
-      setImagePreview(value);
+      setImagePreviews(value ? [value] : []);
     } else {
       setFormData(f => ({ ...f, [name]: value }));
     }
@@ -97,14 +97,17 @@ export default function AdminProductsPage() {
         name: product.name || '', description: product.description || '',
         price: product.price || '', originalPrice: product.originalPrice || '',
         stock: product.stock || 0, categoryId: product.categoryId || '',
-        imageUrl: product.imageUrl || '', image: null
+        imageUrl: product.imageUrl || '', images: []
       });
-      setImagePreview(product.imageUrl || null);
+      const existing = Array.isArray(product.images) && product.images.length > 0
+        ? product.images
+        : product.imageUrl ? [product.imageUrl] : [];
+      setImagePreviews(existing);
       setImageMode('url');
     } else {
       setCurrentProduct(null);
-      setFormData({ name: '', description: '', price: '', originalPrice: '', stock: '0', categoryId: '', imageUrl: '', image: null });
-      setImagePreview(null);
+      setFormData({ name: '', description: '', price: '', originalPrice: '', stock: '0', categoryId: '', imageUrl: '', images: [] });
+      setImagePreviews([]);
       setImageMode('file');
     }
     setIsModalOpen(true);
@@ -112,12 +115,11 @@ export default function AdminProductsPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.imageUrl && !formData.image) { toast.error("Image requise (URL ou fichier)"); return; }
+    if (!formData.imageUrl && formData.images.length === 0) { toast.error("Image requise (URL ou fichier)"); return; }
     setSubmitting(true);
     try {
       let res;
-      if (formData.image) {
-        // file upload — use FormData
+      if (formData.images.length > 0) {
         const data = new FormData();
         data.append('name', formData.name);
         data.append('description', formData.description);
@@ -125,7 +127,7 @@ export default function AdminProductsPage() {
         if (formData.originalPrice) data.append('originalPrice', formData.originalPrice);
         data.append('stock', formData.stock);
         data.append('categoryId', formData.categoryId);
-        data.append('image', formData.image);
+        formData.images.forEach(img => data.append('images', img));
         res = currentProduct
           ? await API.put(`/products/${currentProduct.id}`, data)
           : await API.post('/products', data);
@@ -371,13 +373,24 @@ export default function AdminProductsPage() {
             {/* Gauche — Image */}
             <div className="w-64 bg-gray-50 p-6 flex flex-col gap-4 shrink-0 border-r border-gray-100">
               <p className="text-gray-400 text-[11px] font-bold uppercase tracking-widest">Image produit</p>
-              <div className="flex-1 rounded-2xl overflow-hidden bg-white border-2 border-dashed border-gray-200 flex items-center justify-center min-h-[180px]">
-                {imagePreview
-                  ? <img src={imagePreview} alt="preview" className="w-full h-full object-contain p-4" onError={() => setImagePreview(null)} />
-                  : <div className="text-center text-gray-300 p-4">
-                      <ImageIcon size={36} className="mx-auto mb-2" />
-                      <p className="text-xs">Aucune image</p>
-                    </div>}
+              <div className="flex-1 rounded-2xl overflow-hidden bg-white border-2 border-dashed border-gray-200 flex flex-col items-center justify-center min-h-[180px] gap-2 p-2">
+                {imagePreviews.length === 0 ? (
+                  <div className="text-center text-gray-300 p-4">
+                    <ImageIcon size={36} className="mx-auto mb-2" />
+                    <p className="text-xs">Aucune image</p>
+                  </div>
+                ) : imagePreviews.length === 1 ? (
+                  <img src={imagePreviews[0]} alt="preview" className="w-full h-full object-contain p-2" onError={() => setImagePreviews([])} />
+                ) : (
+                  <>
+                    <img src={imagePreviews[0]} alt="main" className="w-full h-28 object-contain" />
+                    <div className="flex gap-1 flex-wrap justify-center">
+                      {imagePreviews.map((src, i) => (
+                        <img key={i} src={src} alt={`img-${i}`} className="w-10 h-10 object-contain border border-gray-200 rounded-lg" />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
               {/* Mode switch */}
               <div className="flex rounded-xl overflow-hidden border border-gray-200 text-xs font-bold">
@@ -407,8 +420,8 @@ export default function AdminProductsPage() {
                   />
                 : <label className="relative border-2 border-dashed border-gray-200 rounded-xl px-3 py-4 text-gray-400 text-xs text-center cursor-pointer hover:border-[#8B0000]/40 transition-colors">
                     <UploadCloud size={20} className="mx-auto mb-1 text-gray-300" />
-                    Cliquer pour choisir
-                    <input type="file" name="image" onChange={handleInputChange} className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" />
+                    Choisir 1 ou plusieurs images
+                    <input type="file" name="images" onChange={handleInputChange} className="absolute inset-0 opacity-0 cursor-pointer" accept="image/*" multiple />
                   </label>
               }
             </div>
