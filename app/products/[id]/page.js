@@ -113,9 +113,9 @@ export default function ProductDetails() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="relative bg-gray-50 rounded-[3rem] p-12 flex items-center justify-center aspect-square overflow-hidden"
+          className="relative bg-gray-50 rounded-[3rem] p-12 flex items-center justify-center aspect-square overflow-hidden group cursor-zoom-in"
         >
-          <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl" />
+          <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl transition-transform duration-500 group-hover:scale-125" />
         </motion.div>
 
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex flex-col">
