@@ -22,6 +22,7 @@ export default function ProductDetails() {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [isAdding, setIsAdding] = useState(false);
+  const [zoomPos, setZoomPos] = useState({ active: false, x: 50, y: 50 });
 
   const [reviews, setReviews] = useState([]);
   const [newComment, setNewComment] = useState("");
@@ -110,13 +111,46 @@ export default function ProductDetails() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="relative bg-gray-50 rounded-[3rem] p-12 flex items-center justify-center aspect-square overflow-hidden group cursor-zoom-in"
-        >
-          <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl transition-transform duration-500 group-hover:scale-125" />
-        </motion.div>
+        <div className="relative">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="relative bg-gray-50 rounded-[3rem] p-12 flex items-center justify-center aspect-square overflow-hidden cursor-crosshair"
+            onMouseMove={(e) => {
+              const r = e.currentTarget.getBoundingClientRect();
+              setZoomPos({
+                active: true,
+                x: Math.max(0, Math.min(100, ((e.clientX - r.left) / r.width) * 100)),
+                y: Math.max(0, Math.min(100, ((e.clientY - r.top) / r.height) * 100)),
+              });
+            }}
+            onMouseLeave={() => setZoomPos((p) => ({ ...p, active: false }))}
+          >
+            <img src={product.imageUrl} alt={product.name} className="w-full h-full object-contain mix-blend-multiply drop-shadow-2xl" />
+            {zoomPos.active && (
+              <div
+                className="absolute border-2 border-white/80 bg-white/15 pointer-events-none shadow-inner"
+                style={{
+                  width: "38%", height: "38%",
+                  left: `${zoomPos.x}%`, top: `${zoomPos.y}%`,
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+            )}
+          </motion.div>
+
+          {zoomPos.active && (
+            <div
+              className="hidden lg:block absolute top-0 left-[calc(100%+2rem)] w-full aspect-square rounded-3xl border border-gray-100 shadow-2xl z-50 bg-white"
+              style={{
+                backgroundImage: `url(${product.imageUrl})`,
+                backgroundSize: "300%",
+                backgroundPosition: `${zoomPos.x}% ${zoomPos.y}%`,
+                backgroundRepeat: "no-repeat",
+              }}
+            />
+          )}
+        </div>
 
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex flex-col">
           <span className="text-primary font-black tracking-widest text-xs uppercase mb-4">GALAXY DIGITAL EXCLUSIF</span>
