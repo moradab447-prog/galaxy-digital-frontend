@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   ShoppingCart, ArrowLeft, Plus, Minus, Star,
-  ShieldCheck, Truck, RotateCcw, Loader2, User, Send
+  ShieldCheck, Truck, RotateCcw, Loader2, User, Send, ChevronLeft, ChevronRight
 } from "lucide-react";
 import API from "@/api/api";
 import { useCart } from "@/context/CartContext";
@@ -30,6 +30,8 @@ export default function ProductDetails() {
   const [newComment, setNewComment] = useState("");
   const [newRating, setNewRating] = useState(5);
   const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+  const [similarProducts, setSimilarProducts] = useState([]);
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,6 +43,12 @@ export default function ProductDetails() {
         ]);
         setProduct(productRes.data);
         setReviews(reviewsRes.data);
+        const catId = productRes.data?.categoryId;
+        if (catId) {
+          const simRes = await API.get(`/products?categoryId=${catId}&limit=20`);
+          const all = simRes.data?.data || simRes.data || [];
+          setSimilarProducts(all.filter(p => p.id !== productRes.data.id));
+        }
       } catch (err) {
         toast.error("Produit introuvable");
         router.push("/products");
@@ -294,6 +302,64 @@ export default function ProductDetails() {
           )}
         </div>
       </div>
+
+      {similarProducts.length > 0 && (
+        <div className="max-w-7xl mx-auto px-4 border-t border-gray-100 pt-12 mb-16">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xl font-black text-gray-900">
+              {similarProducts.length} autre{similarProducts.length > 1 ? "s" : ""} produit{similarProducts.length > 1 ? "s" : ""} dans la même catégorie
+            </h2>
+            <div className="flex gap-2">
+              <button
+                onClick={() => carouselRef.current?.scrollBy({ left: -320, behavior: "smooth" })}
+                className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                onClick={() => carouselRef.current?.scrollBy({ left: 320, behavior: "smooth" })}
+                className="w-9 h-9 rounded-full border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
+
+          <div ref={carouselRef} className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide scroll-smooth">
+            {similarProducts.map((p) => {
+              const disc = p.originalPrice > p.price
+                ? Math.round(((p.originalPrice - p.price) / p.originalPrice) * 100)
+                : 0;
+              return (
+                <div
+                  key={p.id}
+                  onClick={() => { router.push(`/products/${p.id}`); setActiveImg(0); }}
+                  className="shrink-0 w-44 bg-white border border-gray-100 rounded-2xl overflow-hidden cursor-pointer hover:shadow-lg hover:border-primary/30 transition-all group"
+                >
+                  <div className="relative bg-gray-50 aspect-square flex items-center justify-center p-3">
+                    {disc > 0 && (
+                      <span className="absolute top-2 left-2 bg-primary text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">-{disc}%</span>
+                    )}
+                    <img
+                      src={p.imageUrl}
+                      alt={p.name}
+                      className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <p className="text-xs font-bold text-gray-800 line-clamp-2 mb-2">{p.name}</p>
+                    <p className="text-sm font-black text-primary">{Number(p.price).toLocaleString()} MAD</p>
+                    {p.originalPrice > p.price && (
+                      <p className="text-[11px] text-gray-300 line-through">{Number(p.originalPrice).toLocaleString()} MAD</p>
+                    )}
+                    <p className="text-[10px] text-green-600 font-bold mt-1">En stock</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       <div className="max-w-4xl mx-auto px-4 border-t border-gray-100 pt-16">
         <h2 className="text-2xl font-black text-gray-900 mb-8">AVIS CLIENTS ({reviews.length})</h2>
