@@ -299,7 +299,7 @@ export default function ProductDetails() {
           )}
           {activeTab === "details" && (
             <p className="whitespace-pre-line">
-              {product.description || "Aucun détail technique disponible pour ce produit."}
+              {product.details || "Aucun détail technique disponible pour ce produit."}
             </p>
           )}
           {activeTab === "expedition" && (
