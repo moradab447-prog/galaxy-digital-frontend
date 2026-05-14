@@ -61,18 +61,23 @@ const STATIC_REVIEWS = [
 ];
 
 const CAT_DATA = {
-  "Petit Électroménager":           { img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80", color: "#fff3e0" },
-  "Gros Électroménager":            { img: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=600&q=80", color: "#e8eaf6" },
-  "Climatisation":                  { img: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=600&q=80", color: "#e0f7fa" },
-  "TV, Vidéo & Audio":              { img: "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=600&q=80", color: "#f3e5f5" },
-  "Informatique":                   { img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80", color: "#e8f5e9" },
-  "Smartphone & Tablette":          { img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80", color: "#fff8e1" },
-  "Montres & Wearables":            { img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80", color: "#fce4ec" },
-  "Accessoires":                    { img: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?auto=format&fit=crop&w=600&q=80", color: "#f1f8e9" },
-  "Entretien & Soin de la Maison":  { img: "https://images.unsplash.com/photo-1527515545081-5db817172677?auto=format&fit=crop&w=600&q=80", color: "#e0f2f1" },
-  "Beauté & Santé":                 { img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80", color: "#fce4ec" },
-  "Gaming":                         { img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80", color: "#311b92" },
-  "L'Encastrable":                  { img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=80", color: "#efebe9" },
+  // ── Noms actuels en DB ──
+  "Réfrigérateurs":                 { img: "https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&w=200&q=80", color: "#e0f7fa" },
+  "Machines à laver":               { img: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=200&q=80", color: "#e8eaf6" },
+  "Téléviseurs":                    { img: "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=200&q=80", color: "#f3e5f5" },
+  "Climatiseurs":                   { img: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=200&q=80", color: "#e0f2f1" },
+  "Cuisinières & Fours":            { img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=200&q=80", color: "#fff3e0" },
+  "Smartphones":                    { img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=200&q=80", color: "#fff8e1" },
+  "Petit électroménager":           { img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=200&q=80", color: "#fce4ec" },
+  "Aspirateurs":                    { img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=200&q=80", color: "#f1f8e9" },
+  // ── Anciens noms (fallback) ──
+  "Petit Électroménager":           { img: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=200&q=80", color: "#fff3e0" },
+  "Gros Électroménager":            { img: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=200&q=80", color: "#e8eaf6" },
+  "Climatisation":                  { img: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=200&q=80", color: "#e0f7fa" },
+  "TV, Vidéo & Audio":              { img: "https://images.unsplash.com/photo-1461151304267-38535e780c79?auto=format&fit=crop&w=200&q=80", color: "#f3e5f5" },
+  "Informatique":                   { img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=200&q=80", color: "#e8f5e9" },
+  "Smartphone & Tablette":          { img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=200&q=80", color: "#fff8e1" },
+  "L'Encastrable":                  { img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=200&q=80", color: "#efebe9" },
 };
 
 // ─── Countdown ────────────────────────────────────────────────────────────────
