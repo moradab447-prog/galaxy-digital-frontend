@@ -199,13 +199,13 @@ function ProductsPageInner() {
             {loading ? "Chargement..." : `${filtered.length} produit${filtered.length > 1 ? "s" : ""} disponible${filtered.length > 1 ? "s" : ""}`}
           </p>
           <div className="mt-5 relative max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70" size={18} />
             <input
               type="text"
               value={localSearch}
               onChange={(e) => { setLocalSearch(e.target.value); setCurrentPage(1); }}
               placeholder="Rechercher un produit, une marque..."
-              className="w-full pl-11 pr-4 py-3 rounded-xl text-gray-800 text-sm font-medium focus:outline-none"
+              className="w-full pl-11 pr-4 py-3 rounded-xl bg-white/15 text-white placeholder-white/60 text-sm font-medium focus:outline-none focus:bg-white/25 transition-colors border border-white/20"
             />
             {localSearch && (
               <button onClick={() => setLocalSearch("")} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
