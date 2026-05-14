@@ -55,7 +55,8 @@ export default function AdminProductsPage() {
 
   const [formData, setFormData] = useState({
     name: '', description: '', price: '', originalPrice: '',
-    stock: '0', categoryId: '', imageUrl: '', images: []
+    stock: '0', categoryId: '', imageUrl: '', images: [],
+    marque: '', reference: ''
   });
 
   const fetchData = async () => {
@@ -97,7 +98,8 @@ export default function AdminProductsPage() {
         name: product.name || '', description: product.description || '',
         price: product.price || '', originalPrice: product.originalPrice || '',
         stock: product.stock || 0, categoryId: product.categoryId || '',
-        imageUrl: product.imageUrl || '', images: []
+        imageUrl: product.imageUrl || '', images: [],
+        marque: product.marque || '', reference: product.reference || ''
       });
       const existing = Array.isArray(product.images) && product.images.length > 0
         ? product.images
@@ -127,6 +129,8 @@ export default function AdminProductsPage() {
         if (formData.originalPrice) data.append('originalPrice', formData.originalPrice);
         data.append('stock', formData.stock);
         data.append('categoryId', formData.categoryId);
+        if (formData.marque) data.append('marque', formData.marque);
+        if (formData.reference) data.append('reference', formData.reference);
         formData.images.forEach(img => data.append('images', img));
         res = currentProduct
           ? await API.put(`/products/${currentProduct.id}`, data)
@@ -141,6 +145,8 @@ export default function AdminProductsPage() {
           stock: Number(formData.stock),
           categoryId: Number(formData.categoryId),
           imageUrl: formData.imageUrl,
+          marque: formData.marque || undefined,
+          reference: formData.reference || undefined,
         };
         res = currentProduct
           ? await API.put(`/products/${currentProduct.id}`, payload)
@@ -496,6 +502,26 @@ export default function AdminProductsPage() {
                       required type="number" name="stock" value={formData.stock}
                       onChange={handleInputChange}
                       className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-700 text-sm outline-none focus:border-[#8B0000] transition-colors"
+                    />
+                  </div>
+                </div>
+
+                {/* Marque + Référence */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">Marque</label>
+                    <input
+                      type="text" name="marque" value={formData.marque}
+                      onChange={handleInputChange} placeholder="Ex: Samsung, Beko..."
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 text-sm outline-none focus:border-[#8B0000] placeholder-gray-300 transition-colors"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-[11px] font-bold text-gray-400 uppercase tracking-wider block mb-1.5">Référence</label>
+                    <input
+                      type="text" name="reference" value={formData.reference}
+                      onChange={handleInputChange} placeholder="Ex: BM1WFT39200BS"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-800 text-sm outline-none focus:border-[#8B0000] placeholder-gray-300 transition-colors"
                     />
                   </div>
                 </div>

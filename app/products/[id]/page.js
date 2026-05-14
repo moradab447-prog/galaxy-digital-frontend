@@ -201,6 +201,17 @@ export default function ProductDetails() {
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="flex flex-col">
           <span className="text-primary font-black tracking-widest text-xs uppercase mb-4">GALAXY DIGITAL EXCLUSIF</span>
           <h1 className="text-4xl font-black text-gray-900 leading-tight mb-4 uppercase">{product.name}</h1>
+          {(product.marque || product.reference) && (
+            <div className="flex items-center gap-3 text-sm text-gray-500 mb-4 border-b border-gray-100 pb-4">
+              {product.marque && (
+                <span>Marque : <span className="font-bold text-gray-700">{product.marque}</span></span>
+              )}
+              {product.marque && product.reference && <span className="text-gray-300">|</span>}
+              {product.reference && (
+                <span>Référence : <span className="font-bold text-gray-700">{product.reference}</span></span>
+              )}
+            </div>
+          )}
           <div className="flex items-center gap-4 mb-8">
             <div className="flex items-center gap-1 text-yellow-400">
               {[...Array(5)].map((_, i) => (
