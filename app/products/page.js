@@ -50,7 +50,7 @@ const ProductCard = ({ product }) => {
       className="bg-white cursor-pointer rounded-2xl overflow-hidden border border-gray-100 hover:border-[#8B0000]/30 hover:shadow-xl transition-all duration-300 flex flex-col group"
     >
       {/* Image */}
-      <div className="relative bg-gray-50 aspect-square overflow-hidden flex items-center justify-center p-4">
+      <div className="relative bg-white aspect-square overflow-hidden flex items-center justify-center p-4">
         {discount > 0 && (
           <span className="absolute top-3 left-3 z-10 bg-[#8B0000] text-white text-[10px] font-bold px-2 py-1 rounded-lg">
             -{discount}%

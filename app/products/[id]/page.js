@@ -127,7 +127,7 @@ export default function ProductDetails() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative bg-gray-50 rounded-[3rem] p-12 flex items-center justify-center aspect-square overflow-hidden cursor-crosshair"
+              className="relative bg-white rounded-[3rem] p-12 flex items-center justify-center aspect-square overflow-hidden cursor-crosshair border border-gray-100"
               onMouseMove={(e) => {
                 const r = e.currentTarget.getBoundingClientRect();
                 setZoomPos({
@@ -347,7 +347,7 @@ export default function ProductDetails() {
                   onClick={() => { router.push(`/products/${p.id}`); setActiveImg(0); }}
                   className="shrink-0 w-44 bg-white border border-gray-100 rounded-2xl overflow-hidden cursor-pointer hover:shadow-lg hover:border-primary/30 transition-all group"
                 >
-                  <div className="relative bg-gray-50 aspect-square flex items-center justify-center p-3">
+                  <div className="relative bg-white aspect-square flex items-center justify-center p-3">
                     {disc > 0 && (
                       <span className="absolute top-2 left-2 bg-primary text-white text-[9px] font-bold px-1.5 py-0.5 rounded-md">-{disc}%</span>
                     )}

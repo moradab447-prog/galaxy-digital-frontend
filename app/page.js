@@ -112,7 +112,7 @@ const MiniCard = ({ product }) => {
       onClick={() => router.push(`/products/${product.id}`)}
       className="cursor-pointer bg-white rounded-2xl border border-gray-100 hover:border-[#8B0000]/20 hover:shadow-lg transition-all duration-300 flex flex-col group w-44 sm:w-52 shrink-0"
     >
-      <div className="relative bg-gray-50 rounded-t-2xl overflow-hidden flex items-center justify-center" style={{ height: 140 }}>
+      <div className="relative bg-white rounded-t-2xl overflow-hidden flex items-center justify-center" style={{ height: 140 }}>
         {discount > 0 && <span className="absolute top-2 left-2 z-10 bg-[#8B0000] text-white text-[9px] font-black px-2 py-0.5 rounded-full">-{discount}%</span>}
         <button type="button" onClick={(e) => { e.stopPropagation(); setLiked(!liked); }} className="absolute top-2 right-2 z-10 bg-white/80 p-1.5 rounded-full">
           <Heart size={13} className={liked ? "fill-red-500 text-red-500" : "text-gray-300"} />
