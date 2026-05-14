@@ -13,9 +13,13 @@ import { useAuth } from "@/context/AuthContext";
 const ProductCard = ({ product }) => {
   const [liked, setLiked] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
+  const [hovered, setHovered] = useState(false);
   const router = useRouter();
   const { addToCart } = useCart();
   const { isAuthenticated, openLogin } = useAuth();
+
+  const imgs = Array.isArray(product.images) && product.images.length > 1 ? product.images : null;
+  const displayImg = hovered && imgs ? imgs[1] : product.imageUrl;
 
   const discount = product.originalPrice && product.originalPrice > product.price
     ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
@@ -50,7 +54,11 @@ const ProductCard = ({ product }) => {
       className="bg-white cursor-pointer rounded-2xl overflow-hidden border border-gray-100 hover:border-[#8B0000]/30 hover:shadow-xl transition-all duration-300 flex flex-col group"
     >
       {/* Image */}
-      <div className="relative bg-white aspect-square overflow-hidden flex items-center justify-center p-4">
+      <div
+        className="relative bg-white aspect-square overflow-hidden flex items-center justify-center p-4"
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
         {discount > 0 && (
           <span className="absolute top-3 left-3 z-10 bg-[#8B0000] text-white text-[10px] font-bold px-2 py-1 rounded-lg">
             -{discount}%
@@ -69,9 +77,9 @@ const ProductCard = ({ product }) => {
           <Heart size={15} className={liked ? "fill-red-500 text-red-500" : "text-gray-400"} />
         </button>
         <img
-          src={product.imageUrl}
+          src={displayImg}
           alt={product.name}
-          className="h-40 w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+          className="h-40 w-full object-contain mix-blend-multiply transition-all duration-300 group-hover:scale-105"
           onError={(e) => { e.target.src = "https://via.placeholder.com/300x300?text=Photo"; }}
         />
       </div>
